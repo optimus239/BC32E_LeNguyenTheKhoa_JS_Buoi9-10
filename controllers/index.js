@@ -16,7 +16,6 @@ document.querySelector("#btnThemNV").onclick = function () {
     kiemTraRong(nhanVien.hoTen, "#error_hoTen", "Họ và tên") &
     kiemTraRong(nhanVien.email, "#error_email", "Email") &
     kiemTraRong(nhanVien.matKhau, "#error_matKhau", "Mật khẩu") &
-    // kiemTraRong2(nhanVien.ngayLam, "error_ngayLam", "Ngày làm") &
     kiemTraRongLuong(nhanVien.luongCoBan, "#error_luongCoBan", "Lương cơ bản") &
     kiemTraRong(nhanVien.gioLamTrongThang, "#error_gioLam", "Giờ làm") &
     kiemTraDoDai(
@@ -29,6 +28,7 @@ document.querySelector("#btnThemNV").onclick = function () {
     kiemTraTatCaKyTu(nhanVien.hoTen, "#error_letter_hoTen", "Họ và tên") &
     kiemTraEmail(nhanVien.email, "#error_checkEmail", "Email") &
     kiemTraMatKhau(nhanVien.matKhau, "#error_checkMatKhau", "Mật khẩu") &
+    kiemTraNgayLam(nhanVien.ngayLam, "#error_checkNgayLam", "Ngày làm") &
     kiemTraChucVu(nhanVien.chucVu, "#error_checkChucVu") &
     kiemTraGioLam(nhanVien.gioLamTrongThang, "#error_checkGioLam", 80, 200);
   if (!valid) {
@@ -119,7 +119,6 @@ function chinhSuaNhanVien(taiKhoanNhanVienClick) {
   console.log("nvEdit", nvEdit);
 
   document.querySelector("#tknv").disabled = true;
-  document.querySelector("#password").disabled = true;
   document.querySelector("#tknv").value = nvEdit.taiKhoan;
   document.querySelector("#name").value = nvEdit.hoTen;
   document.querySelector("#email").value = nvEdit.email;
@@ -151,20 +150,24 @@ document.querySelector("#btnCapNhat").onclick = function () {
 
   var valid = true;
   valid &=
-    kiemTraRong(nhanVien.taiKhoan, "#error_taiKhoan", "Tài khoản") &
     kiemTraRong(nhanVien.hoTen, "#error_hoTen", "Họ và tên") &
     kiemTraRong(nhanVien.email, "#error_email", "Email") &
     kiemTraRong(nhanVien.matKhau, "#error_matKhau", "Mật khẩu") &
-    kiemTraRong(nhanVien.ngayLam, "#error_ngayLam", "Ngày làm") &
-    kiemTraRong(nhanVien.luongCoBan, "#error_luongCoBan", "Lương cơ bản") &
-    kiemTraRong(nhanVien.gioLamTrongThang, "#error_gioLam", "Giờ làm");
+    // kiemTraRong2(nhanVien.ngayLam, "error_ngayLam", "Ngày làm") &
+    kiemTraRongLuong(nhanVien.luongCoBan, "#error_luongCoBan", "Lương cơ bản") &
+    kiemTraRong(nhanVien.gioLamTrongThang, "#error_gioLam", "Giờ làm") &
+    kiemTraTatCaKyTu(nhanVien.hoTen, "#error_letter_hoTen", "Họ và tên") &
+    kiemTraEmail(nhanVien.email, "#error_checkEmail", "Email") &
+    kiemTraMatKhau(nhanVien.matKhau, "#error_checkMatKhau", "Mật khẩu") &
+    kiemTraNgayLam(nhanVien.ngayLam, "#error_checkNgayLam", "Ngày làm") &
+    kiemTraChucVu(nhanVien.chucVu, "#error_checkChucVu") &
+    kiemTraGioLam(nhanVien.gioLamTrongThang, "#error_checkGioLam", 80, 200);
   if (!valid) {
     return;
   }
 
   renderTableNhanVien(mangNhanVien);
   document.querySelector("#tknv").disabled = false;
-  document.querySelector("#password").disabled = false;
   luuLocalStorage();
   lamMoiForm();
 };
@@ -198,6 +201,8 @@ function lamMoiForm() {
   document.querySelector("#chucvu").value = "";
   document.querySelector("#gioLam").value = "";
 }
+
+document.querySelector("#btnTimNV").onclick = function () {};
 //   var trNhanVien = document.createElement("tr");
 //   document.querySelector("#tableDanhSach").appendChild(trNhanVien);
 //   var tdtaiKhoan = document.createElement("td");

@@ -87,3 +87,14 @@ function kiemTraGioLam(value, selectorError, minTime, maxTime) {
   document.querySelector(selectorError).innerHTML = "";
   return true;
 }
+
+function kiemTraNgayLam(value, selectorError, name) {
+  var regexDay = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  if (regexDay.test(value)) {
+    document.querySelector(selectorError).innerHTML = "";
+    return true;
+  }
+  document.querySelector(selectorError).innerHTML =
+    name + " không được để trống hoặc nhập sai !";
+  return false;
+}
