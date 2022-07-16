@@ -202,7 +202,46 @@ function lamMoiForm() {
   document.querySelector("#gioLam").value = "";
 }
 
-document.querySelector("#btnTimNV").onclick = function () {};
+document.querySelector("#btnTimNV").onclick = function () {
+  var timKiem = document.querySelector("#searchName").value;
+  var mangXepLoai = [];
+  var html = "";
+  document.querySelector("#tableDanhSach").style.display = "none";
+  for (var i = 0; i < mangNhanVien.length; i++) {
+    var loaiNhanVien = mangNhanVien[i].xepLoai();
+    if (loaiNhanVien === timKiem) {
+      var timKiemNhanVien = {
+        taiKhoan: mangNhanVien[i].taiKhoan,
+        hoTen: mangNhanVien[i].hoTen,
+        email: mangNhanVien[i].email,
+        ngayLam: mangNhanVien[i].ngayLam,
+        chucVu: mangNhanVien[i].chucVu,
+        tongluong: mangNhanVien[i].tinhTongLuong(),
+        xepLoai: mangNhanVien[i].xepLoai(),
+      };
+      mangXepLoai.push(timKiemNhanVien);
+
+      html += `
+        <tr>
+          <td>${timKiemNhanVien.taiKhoan}</td>
+          <td>${timKiemNhanVien.hoTen}</td>
+          <td>${timKiemNhanVien.email}</td>
+          <td>${timKiemNhanVien.ngayLam}</td>
+          <td>${timKiemNhanVien.chucVu}</td>
+          <td>${timKiemNhanVien.tongluong}</td>
+          <td>${timKiemNhanVien.xepLoai}</td>
+          <td>
+          <button class="btn btn-primary px-4 mb-2" data-toggle="modal" data-target="#myModal" onclick="chinhSuaNhanVien('${timKiemNhanVien.taiKhoan}')">Edit</button>
+          <button class="btn btn-danger" onclick="xoaNhanVien('${timKiemNhanVien.taiKhoan}')">Delete</button>
+          </td>
+        </tr>
+        `;
+      document.querySelector("#tableDanhSachTimKiem").innerHTML = html;
+      document.querySelector("#tableDanhSachTimKiem").style.display =
+        "table-row-group";
+    }
+  }
+};
 //   var trNhanVien = document.createElement("tr");
 //   document.querySelector("#tableDanhSach").appendChild(trNhanVien);
 //   var tdtaiKhoan = document.createElement("td");

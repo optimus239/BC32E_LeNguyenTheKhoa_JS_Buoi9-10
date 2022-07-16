@@ -64,7 +64,7 @@ function kiemTraMatKhau(value, selectorError, name) {
 }
 
 function kiemTraChucVu(value, selectorError) {
-  if (value === "Chọn chức vụ") {
+  if (value === "Chọn chức vụ" || value === "") {
     document.querySelector(selectorError).innerHTML =
       "Chọn chức vụ cho nhân viên !";
     return false;
@@ -89,7 +89,7 @@ function kiemTraGioLam(value, selectorError, minTime, maxTime) {
 }
 
 function kiemTraNgayLam(value, selectorError, name) {
-  var regexDay = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  var regexDay = /^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
   if (regexDay.test(value)) {
     document.querySelector(selectorError).innerHTML = "";
     return true;
