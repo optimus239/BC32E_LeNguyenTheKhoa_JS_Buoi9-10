@@ -239,8 +239,17 @@ document.querySelector("#btnTimNV").onclick = function () {
       document.querySelector("#tableDanhSachTimKiem").innerHTML = html;
       document.querySelector("#tableDanhSachTimKiem").style.display =
         "table-row-group";
+    } else if (timKiem === "Xếp loại nhân viên") {
+      document.querySelector("#tableDanhSachTimKiem").style.display = "none";
+      document.querySelector("#tableDanhSach").style.display =
+        "table-row-group";
     }
   }
+};
+
+document.querySelector("#btnDong").onclick = function () {
+  document.querySelector("#tknv").disabled = false;
+  lamMoiForm();
 };
 //   var trNhanVien = document.createElement("tr");
 //   document.querySelector("#tableDanhSach").appendChild(trNhanVien);
